@@ -1,0 +1,126 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+
+    <img width="40" alt="Uniso Logo" class="logo" src="assets/img/logo.png" />
+
+    <span class="title"><label class="btn" for="modal-1">INFORMA</label> </span>
+
+    <div class="spacer"></div>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script src="/node_modules/angular-locale-pt-br/angular-locale_pt-br.js"></script>
+    <div>
+        <i class="material-icons icon">schedule</i>
+    </div>
+
+    <!-- ABAIXO FAZ O HORARIO E COM '-3' FAZ REMOVER OU ADICIONA HORA DE VERAO-->
+    <time class="clock">
+        {{today | date : 'HH:mm:ss' : '-3'}}
+    </time>
+
+    <!-- <div> // icone adm ao lado na tolbar
+                <a routerLink="/editar-mensagem"> <i class="material-icons icon">assignment_ind</i> </a>
+        </div> -->
+
+</div>
+
+<!-- Cronogram -->
+<div class=" crono-card ">
+    <div class="">
+        <p class="cronog">Cronograma de Aulas : {{today | date:'dd/MM/yyyy'}} <sub class="crono2">
+            {{retorno.antesIntervalo ? 'Antes do Intervalo' : 'Após Intervalo'}} </sub> <span class="periodo1">Período: </span><span class="periodo">{{periodos}}</span></p>
+    </div> 
+</div>
+
+
+<!--Cards-->
+<div class="content" role="main">
+
+    <div class="card-container">
+        <div class="card card-small ">
+            <p class="cardfree1 fa-blink">LAB-LIVRE</p>
+
+            <!-- <span  routerLink="/editar-mensagem" > <p [innerHtml]="texto2" class="cardfree2"> </p> </span> -->
+            <span routerLink="">
+                <p [innerHtml]="texto2" class="cardfree2"> </p>
+            </span>
+        </div>
+
+      
+       
+
+
+        
+
+        <div class="card card-small" *ngFor="let dado of salasTerreo">
+            <p class="card1b">{{dado.codigoSala}}</p>
+
+            <p class="card2">{{dado.nomeProfessor}}</p>
+
+            <p class="card3">{{dado.nomeDisciplina}}</p>
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <div class="card-container2 ">
+
+        <div class="card card-small" *ngFor="let dado of salas1Andar">
+            <p class="card1">{{dado.codigoSala}}</p>
+
+            <p class="card2">{{dado.nomeProfessor}}</p>
+
+            <p class="card3">{{dado.nomeDisciplina}}</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="marquee free text">
+
+    <a><span [innerHtml]="texto"></span> </a>
+
+</div>
+
+
+
+<input class="modal-state" id="modal-1" type="checkbox" name="modal-1" />
+<div class="modal">
+    <label class="modal__bg" for="modal-1"></label>
+    <div class="modal__inner">
+        <label class="modal__close" for="modal-1"></label>
+        <h3>Editar Mensagem</h3>
+
+
+        <div class="centerl container">
+
+            <!-- <div class="center2">
+            <input class="button2" type='button' value='X' onclick='history.go(-1)' />       
+        </div> -->
+
+            <div class="center">
+                <button class="msg">Laboratorio Livre</button>
+                <textarea class="form" [(ngModel)]="texto2" rows="3" cols="50"> </textarea>
+            </div>
+
+            <div class="center">
+                <button class="msg msg2">Mensagem</button>
+                <textarea class="form" [(ngModel)]="texto" rows="4" cols="50"> </textarea>
+            </div>
+
+            <div class="center">
+                <!-- <button class="button " name="button"  (click)="salvar()" onclick='history.go(-1)'>Salvar</button> -->
+                <label class="button3" for="modal-1" (click)="salvar()">Salvar</label>
+            </div>
+
+        </div>
+
+    </div>
+</div>

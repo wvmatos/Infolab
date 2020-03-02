@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: rgba(236, 236, 236, 0.438);
+    background-image: url("assets/img/logo.png");
+    background-repeat: no-repeat;
+    background-size: 380px;
+    background-position: center; 
+    background-attachment: fixed;
+
+    
+}
+
+/* OCULTA BARRA DE ROLAGEM*/
+::-webkit-scrollbar {
+    display: none;
+}
+
+
